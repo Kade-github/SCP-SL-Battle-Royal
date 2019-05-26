@@ -14,6 +14,6 @@ The last person to be alive wins the game!
 This isn't supposed to abide by smod's config rules. Basicily it will never be a 'good' smod plugin ;-;
 
 # Credits
-CHerry for the idea
-Kurva Gaming for giving me developer on their server so i can abuse players lmao
+CHerry for the idea,
+Kurva Gaming for giving me developer on their server so i can abuse players lmao,
 me I wrote the thing.
