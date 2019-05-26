@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +20,7 @@ namespace Battle_Royal
         version = "1.0",
         SmodMajor = 3,
         SmodMinor = 4,
-        SmodRevision = 0
+        SmodRevision = 1
         )]
 
     public class BattleRoyal : Plugin
