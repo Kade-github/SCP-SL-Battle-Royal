@@ -1,4 +1,4 @@
-﻿using Smod2.API;
+using Smod2.API;
 using Smod2.EventHandlers;
 using Smod2.Events;
 using System;
@@ -122,29 +122,26 @@ namespace Battle_Royal.Handlers
                 while (st)
                 {
                     // End Condition:
-                    if (GetPlayers() == 1)
+                    switch (GetPlayers())
                     {
-                        string pName = getPlayer(Role.CLASSD).Name;
-                        plugin.Server.Map.Broadcast(10, "<color=lime>" + pName + " has won the game!</color>", true);
-                        endCondition = true;
-                        st = false;
+                        case 1:
+                            string pName = getPlayer(Role.CLASSD).Name;
+                            plugin.Server.Map.Broadcast(10, "<color=lime>" + pName + " has won the game!</color>", true);
+                            endCondition = true;
+                            st = false;
+                            break;
+                        default:
+                            // To try not to spam the console, and the game. We will only do this if the player counter changed.
+                            if (playerCache != GetPlayers())
+                            {
+                                playerCache = GetPlayers();
+                                plugin.Server.Map.Broadcast(1, "<color=lime>" + GetPlayers() + " left.</color>", true);
+                                Thread.Sleep(1000);
+                            }
+                            else
+                                Thread.Sleep(1000);
+                            break;
                     }
-                    else if (GetPlayers() <= 1)
-                    {
-                        plugin.Server.Map.Broadcast(10, "<color=red>No one won!</color>", true);
-                        endCondition = true;
-                        st = false;
-                    }
-
-                        // To try not to spam the console, and the game. We will only do this if the player counter changed.
-                        if (playerCache != GetPlayers())
-                    {
-                        playerCache = GetPlayers();
-                        plugin.Server.Map.Broadcast(1, "<color=lime>" + GetPlayers() + " left.</color>", true);
-                        Thread.Sleep(1000);
-                    }
-                    else
-                        Thread.Sleep(1000);
                 }
             }).Start();
         }
